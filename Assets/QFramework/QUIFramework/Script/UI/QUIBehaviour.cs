@@ -10,7 +10,7 @@ namespace QFramework.UI {
 
 		protected override void SetupMgr ()
 		{
-			mCurMgr = QUGUIMgr.Instance;
+			mCurMgr = QUIManager.Instance;
 		}
 
 		void OnDestroy()
@@ -182,17 +182,17 @@ namespace QFramework.UI {
 
 		public void RegisterSelf(QMonoBehaviour behaviour,ushort[] msgs)
 		{
-			QUGUIMgr.Instance.RegisterMsg(behaviour,mMsgIds);
+			QUIManager.Instance.RegisterMsg(behaviour,mMsgIds);
 		}
 
 		public void UnRegisterSelf(QMonoBehaviour behaviour,ushort[] msg)
 		{
-			QUGUIMgr.Instance.UnRegisterMsg(behaviour,mMsgIds);
+			QUIManager.Instance.UnRegisterMsg(behaviour,mMsgIds);
 		}
 
 		public void SendMsg(QMsg msg)
 		{
-			QUGUIMgr.Instance.SendMsg(msg);
+			QUIManager.Instance.SendMsg(msg);
 		}
 
 

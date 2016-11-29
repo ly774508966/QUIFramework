@@ -25,3 +25,9 @@
 /Users/admin/QUIMgr/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
 /Users/admin/QUIMgr/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
 /Users/admin/QUIMgr/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll.mdb
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp-Editor.dll.mdb
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp-Editor.dll
+/Users/admin/QUIMgr/obj/Debug/Assembly-CSharp-Editor.dll
+/Users/admin/QUIMgr/obj/Debug/Assembly-CSharp-Editor.dll.mdb
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp.dll.mdb

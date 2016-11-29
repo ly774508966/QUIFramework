@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class QUICodeGenerator
 {
-    [MenuItem("Assets/Create UICode")]
+    [MenuItem("Assets/QUIFramework - Create UICode")]
     static public void CreateUICode()
     {
 		m_Instance.CreateCode(Selection.activeGameObject);
@@ -96,12 +96,12 @@ public class QUICodeGenerator
                 strBuilder.Append("\t").AppendLine("{");
                 strBuilder.Append("\t").AppendLine("}");
                 strBuilder.Append("\t").AppendLine("protected override void OnShow()");
+				strBuilder.Append("\t").AppendLine("{");
 				strBuilder.Append("\t\t").AppendLine("base.OnShow();");
-                strBuilder.Append("\t").AppendLine("{");
                 strBuilder.Append("\t").AppendLine("}").AppendLine();
                 strBuilder.Append("\t").AppendLine("protected override void OnHide()");
+				strBuilder.Append("\t").AppendLine("{");
 				strBuilder.Append("\t\t").AppendLine("base.OnHide();");
-                strBuilder.Append("\t").AppendLine("{");
                 strBuilder.Append("\t").AppendLine("}").AppendLine();
                 strBuilder.Append("\t").AppendLine("void ShowLog(string content)");
                 strBuilder.Append("\t").AppendLine("{");
@@ -128,7 +128,7 @@ public class QUICodeGenerator
 
     private void CreateUIFactory()
     {
-		string strFilePath = string.Format("{0}/{1}.cs", Application.dataPath + "/QFramework/Script/UI", "QUIFactory");
+		string strFilePath = string.Format("{0}/{1}.cs", Application.dataPath + "/QFramework/QUIFramework/UI", "QUIFactory");
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
         StringBuilder strBuilder = new StringBuilder();
 
@@ -257,7 +257,11 @@ public class QUICodeGenerator
 
     private string GetScriptsPath()
     {
-        return Application.dataPath + "/_Script/UI";
+		var retDir = Application.dataPath + "/_Script/UI";
+		if (!Directory.Exists (retDir)) {
+			Directory.CreateDirectory (retDir);
+		}
+		return retDir;
     }
 
     private string GetScriptsTempPath()
@@ -267,7 +271,12 @@ public class QUICodeGenerator
 
     private string GetUIPrefabPath()
     {
-        return Application.dataPath + "/QArt/QAB/UIPrefab";
+//        return Application.dataPath + "/QArt/QAB/UIPrefab";
+		var retDir = Application.dataPath + "/Assets/Resources";
+		if (!Directory.Exists (retDir)) {
+			Directory.CreateDirectory (retDir);
+		}
+		return retDir;
     }
 
     private GameObject m_SelectGameObject = null;

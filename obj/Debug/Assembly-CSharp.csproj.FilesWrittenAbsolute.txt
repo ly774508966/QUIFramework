@@ -11,3 +11,7 @@
 /Users/admin/QUIMgr/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/admin/QUIMgr/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/admin/QUIMgr/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/admin/QUIMgr/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/admin/QUIMgr/obj/Debug/Assembly-CSharp.dll
+/Users/admin/QUIMgr/obj/Debug/Assembly-CSharp.dll.mdb
