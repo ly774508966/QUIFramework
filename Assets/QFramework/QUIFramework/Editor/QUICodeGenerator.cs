@@ -128,7 +128,7 @@ public class QUICodeGenerator
 
     private void CreateUIFactory()
     {
-		string strFilePath = string.Format("{0}/{1}.cs", Application.dataPath + "/QFramework/QUIFramework/UI", "QUIFactory");
+		string strFilePath = string.Format("{0}/{1}.cs", Application.dataPath + "/QFramework/QUIFramework/Script", "QUIFactory");
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
         StringBuilder strBuilder = new StringBuilder();
 
@@ -271,7 +271,6 @@ public class QUICodeGenerator
 
     private string GetUIPrefabPath()
     {
-//        return Application.dataPath + "/QArt/QAB/UIPrefab";
 		var retDir = Application.dataPath + "/Assets/Resources";
 		if (!Directory.Exists (retDir)) {
 			Directory.CreateDirectory (retDir);
