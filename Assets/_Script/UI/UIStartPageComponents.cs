@@ -8,7 +8,7 @@ public class UIStartPageComponents : IUIComponents
 {
 	public void InitUIComponents()
 	{
-		Image_Image = QUGUIMgr.Instance.Get<UIStartPage>("Image").GetComponent<Image>();
+		Image_Image = QUIManager.Instance.Get<UIStartPage>("Image").GetComponent<Image>();
 	}
 
 	public void Clear()
