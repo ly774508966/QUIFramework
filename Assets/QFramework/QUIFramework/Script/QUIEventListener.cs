@@ -7,7 +7,7 @@ namespace QFramework.UI {
 	/// <summary>
 	/// 事件监听器
 	/// </summary>
-	public class UGUIEventListener : UnityEngine.EventSystems.EventTrigger
+	public class QUIEventListener : UnityEngine.EventSystems.EventTrigger
 	{
 		public QVoidDelegate.WithVoid onClick;
 	
@@ -25,14 +25,14 @@ namespace QFramework.UI {
 
 		public QVoidDelegate.WithBool onValueChanged;
 
-		public static UGUIEventListener CheckAndAddListener(GameObject go)
+		public static QUIEventListener CheckAndAddListener(GameObject go)
 		{
-			UGUIEventListener listener = go.GetComponent<UGUIEventListener>();
-			if (listener == null) listener = go.AddComponent<UGUIEventListener>();
+			QUIEventListener listener = go.GetComponent<QUIEventListener>();
+			if (listener == null) listener = go.AddComponent<QUIEventListener>();
 
 			return listener;
 		}
-		public static  UGUIEventListener Get(GameObject go)
+		public static  QUIEventListener Get(GameObject go)
 		{
 			return CheckAndAddListener (go);
 		}
