@@ -271,7 +271,7 @@ public class QUICodeGenerator
 
     private string GetUIPrefabPath()
     {
-		var retDir = Application.dataPath + "/Assets/Resources";
+		var retDir = Application.dataPath + "/Resources";
 		if (!Directory.Exists (retDir)) {
 			Directory.CreateDirectory (retDir);
 		}
