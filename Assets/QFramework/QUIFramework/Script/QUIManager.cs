@@ -153,7 +153,7 @@ namespace QFramework {
 
 
 			} else {
-				GameObject prefab = Resources.Load<GameObject> (behaviourName.ToLower());
+				GameObject prefab = Resources.Load<GameObject> (behaviourName);
 
 				GameObject mUIGo = Instantiate (prefab);
 				switch (level) {

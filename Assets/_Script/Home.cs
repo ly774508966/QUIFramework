@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using QFramework;
+using QFramework.UI;
+
 public class Home : MonoBehaviour {
 
 	void Start () {
-		var a = QUIManager.Instance;
+		QUIManager.Instance.OpenUI<UIStartPage>(CanvasLevel.Bottom,null,null);
 	}
 	
 	// Update is called once per frame
