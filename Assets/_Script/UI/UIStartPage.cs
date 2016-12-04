@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using QFramework;
 using QFramework.UI;
 using QFramework.Event;
-using QFramework.Extend;
 
 public class UIStartPage : QUIBehaviour
 {

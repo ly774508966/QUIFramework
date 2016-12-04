@@ -77,8 +77,7 @@ public class QUICodeGenerator
                 strBuilder.AppendLine("using UnityEngine.UI;");
 				strBuilder.AppendLine ("using QFramework;");
 				strBuilder.AppendLine("using QFramework.UI;");
-				strBuilder.AppendLine("using QFramework.Event;");
-				strBuilder.AppendLine("using QFramework.Extend;").AppendLine();
+				strBuilder.AppendLine("using QFramework.Event;").AppendLine();
 
                 strBuilder.AppendFormat("public class {0} : QUIBehaviour", strDlg);
                 strBuilder.AppendLine();
