@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{3C9E8221-1F1D-0F5D-D010-39717B056F7C}") = "QUIFramework", "Assembly-CSharp.csproj", "{9964525E-610B-CD4C-7BD6-9F51E0B34251}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QUIFramework", "Assembly-CSharp.csproj", "{9964525E-610B-CD4C-7BD6-9F51E0B34251}"
 EndProject
-Project("{3C9E8221-1F1D-0F5D-D010-39717B056F7C}") = "QUIFramework", "Assembly-CSharp-Editor.csproj", "{87479E60-BE84-E067-1A6A-E58B78B98233}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QUIFramework", "Assembly-CSharp-Editor.csproj", "{87479E60-BE84-E067-1A6A-E58B78B98233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

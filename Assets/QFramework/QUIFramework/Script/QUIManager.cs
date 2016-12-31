@@ -63,16 +63,6 @@ namespace QFramework {
 				listHandler[i].Close();
 			}
 		}
-			
-		public void InternalRemoveMenu(QUIBehaviour _handler)
-		{
-			System.Type type = _handler.GetType();
-			string key = type.ToString();
-			if (mAllUI.ContainsKey(key))
-			{
-				mAllUI.Remove(key);
-			}
-		}
 
 		public Transform Get<T>(string strUIName)
 		{
@@ -93,8 +83,6 @@ namespace QFramework {
 			mAllUI.Clear();
 		}
 			
-
-
 		public static QUIManager Instance {
 			get {
 				return QMonoSingletonComponent<QUIManager>.Instance;
@@ -117,13 +105,9 @@ namespace QFramework {
 			}
 
 			var init =QUIManager.Instance;
-
-
 			yield return null;
 		}
-
-	
-
+			
 		[SerializeField]
 		Dictionary<string,QUIBehaviour> mAllUI = new Dictionary<string, QUIBehaviour> ();
 
@@ -151,7 +135,6 @@ namespace QFramework {
 
 				mAllUI [behaviourName].Enter (uiData);
 
-
 			} else {
 				GameObject prefab = Resources.Load<GameObject> (behaviourName);
 
@@ -172,9 +155,7 @@ namespace QFramework {
 				case CanvasLevel.MainCamera:
 					mUIGo.transform.SetParent (Camera.main.transform);
 					break;
-
 				}
-
 
 				mUIGo.transform.localPosition = Vector3.zero;
 				mUIGo.transform.localEulerAngles = Vector3.zero;
@@ -188,8 +169,7 @@ namespace QFramework {
 				mAllUI.Add (behaviourName, t);
 				t.Init (uiData);
 			}
-
-
+				
 			return mAllUI [behaviourName];
 		}
 
@@ -207,8 +187,7 @@ namespace QFramework {
 				mAllUI.Remove (behaviourName);
 			}
 		}
-
-
+			
 		/// <summary>
 		/// 显示UI层
 		/// </summary>
@@ -222,8 +201,7 @@ namespace QFramework {
 				mAllUI[behaviourName].Show ();
 			}
 		}
-
-
+			
 		/// <summary>
 		/// 隐藏UI层
 		/// </summary>
@@ -237,8 +215,7 @@ namespace QFramework {
 				mAllUI [behaviourName].Hide ();
 			}
 		}
-
-
+			
 		/// <summary>
 		/// 删除所有UI层
 		/// </summary>
@@ -252,8 +229,7 @@ namespace QFramework {
 
 			mAllUI.Clear ();
 		}
-
-
+			
 		/// <summary>
 		/// 获取UIBehaviour
 		public T GetUI<T>()
