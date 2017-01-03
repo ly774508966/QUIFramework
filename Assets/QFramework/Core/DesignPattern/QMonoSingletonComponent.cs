@@ -33,7 +33,6 @@ namespace QFramework {
 						mInstance = instanceGO.AddComponent<T> ();
 
 						Debug.Log ("Add New Singleton " + mInstance.name + " in Game!");
-
 					} else {
 						Debug.LogWarning ("Already exist: " + mInstance.name);
 					}

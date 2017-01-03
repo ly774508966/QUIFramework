@@ -29,6 +29,7 @@ namespace QFramework {
 		{
 			
 		}
+
 		public QUIBehaviour OpenUI<T>(CanvasLevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
 		{
 			string behaviourName = typeof(T).ToString();
@@ -83,8 +84,19 @@ namespace QFramework {
 			mAllUI.Clear();
 		}
 			
+		static GameObject mGo;
 		public static QUIManager Instance {
 			get {
+
+				if (mGo) {
+				} else {
+					mGo = GameObject.Find ("QUIManager")
+					if () {
+					} else {
+						GameObject.Instantiate (Resources.Load ("QUIManager"));
+					}
+				}
+
 				return QMonoSingletonComponent<QUIManager>.Instance;
 			}
 		}
@@ -94,19 +106,8 @@ namespace QFramework {
 			QMonoSingletonComponent<QUIManager>.Dispose ();
 		}
 
-		/// <summary>
-		/// 初始化
-		/// </summary>
-		public static IEnumerator Init() {
-			if (GameObject.Find ("QUIManager")) {
 
-			} else {
-				GameObject.Instantiate (Resources.Load ("QUIManager"));
-			}
 
-			var init =QUIManager.Instance;
-			yield return null;
-		}
 			
 		[SerializeField]
 		Dictionary<string,QUIBehaviour> mAllUI = new Dictionary<string, QUIBehaviour> ();
