@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using QFramework.AB;
 using QFramework.UI;
+
 namespace QFramework {
 
 	public enum QUILevel
@@ -20,16 +21,37 @@ namespace QFramework {
 	/// UGUI UI界面管理器
 	/// </summary>
 	public class QUIManager : QMgrBehaviour{ 
+		
+		[SerializeField]
+		Dictionary<string,QUIBehaviour> mAllUI = new Dictionary<string, QUIBehaviour> ();
 
-		protected override void SetupMgrId ()
-		{
-			mMgrId = (ushort)QMgrID.UI;
+		[SerializeField] Transform mBgTrans;
+		[SerializeField] Transform mCommonTrans;
+		[SerializeField] Transform mPopUITrans;
+		[SerializeField] Transform mConstTrans;
+		[SerializeField] Transform mToastTrans;
+		[SerializeField] Transform mForwardTrans;
+		[SerializeField] Camera mUICamera;
+
+		static GameObject mGo;
+		public static QUIManager Instance {
+			get {
+
+				if (mGo) {
+				} else {
+					mGo = GameObject.Find ("QUIManager");
+					if (mGo) {
+
+					} else {
+						mGo = GameObject.Instantiate (Resources.Load ("QUIManager")) as GameObject;
+					}
+				}
+
+				return QMonoSingletonComponent<QUIManager>.Instance;
+			}
 		}
 
-		protected override void SetupMgr ()
-		{
 
-		}
 
 		public QUIBehaviour OpenUI<T>(QUILevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
 		{
@@ -84,43 +106,6 @@ namespace QFramework {
 		{
 			mAllUI.Clear();
 		}
-
-		static GameObject mGo;
-		public static QUIManager Instance {
-			get {
-
-				if (mGo) {
-				} else {
-					mGo = GameObject.Find ("QUIManager");
-					if (mGo) {
-
-					} else {
-						mGo = GameObject.Instantiate (Resources.Load ("QUIManager")) as GameObject;
-					}
-				}
-
-				return QMonoSingletonComponent<QUIManager>.Instance;
-			}
-		}
-
-		public void OnDestroy()
-		{
-			QMonoSingletonComponent<QUIManager>.Dispose ();
-		}
-
-
-
-
-		[SerializeField]
-		Dictionary<string,QUIBehaviour> mAllUI = new Dictionary<string, QUIBehaviour> ();
-
-		[SerializeField] Transform mBgTrans;
-		[SerializeField] Transform mCommonTrans;
-		[SerializeField] Transform mPopUITrans;
-		[SerializeField] Transform mConstTrans;
-		[SerializeField] Transform mToastTrans;
-		[SerializeField] Transform mForwardTrans;
-		[SerializeField] Camera mUICamera;
 
 		/// <summary>
 		/// 增加UI层
@@ -257,6 +242,21 @@ namespace QFramework {
 		public Camera GetUICamera() 
 		{
 			return mUICamera;
+		}
+			
+		protected override void SetupMgrId ()
+		{
+			mMgrId = (ushort)QMgrID.UI;
+		}
+
+		protected override void SetupMgr ()
+		{
+
+		}
+
+		public void OnDestroy()
+		{
+			QMonoSingletonComponent<QUIManager>.Dispose ();
 		}
 	}
 }
