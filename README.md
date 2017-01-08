@@ -15,11 +15,11 @@ ProcessMsg(),该方法处理消息
 RegisterUIEvent(),该方法用于内部触发事件的注册，如：按钮点击事件等
 OnShow(),该方法界面每次显示时调用
 OnClose(),该方法界面隐藏时调用
-<br>2. UI行为组件类
-&emsp;&emsp;![](./docres/uibehavior.png)
+<br>2. QUIComponent组件类
+&emsp;&emsp;![](./docres/uicomponent.png)
 自动生成需要访问的组件，并进行初始化和销毁。
-<br>3. UIBase类<br>
-&emsp;&emsp;![](./docres/uibase.png)
+<br>3. QUIBehaviour类<br>
+&emsp;&emsp;![](./docres/uibehavior.png)
 所有自动生成的UI的基类，定义一些虚方法供子类重写。
 <br>4. UIManager类<br>
 所有自动生成的UI的管理类，提供一些方法来打开关闭ui：
