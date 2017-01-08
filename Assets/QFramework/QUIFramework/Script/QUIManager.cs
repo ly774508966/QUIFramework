@@ -90,10 +90,11 @@ namespace QFramework {
 
 				if (mGo) {
 				} else {
-					mGo = GameObject.Find ("QUIManager")
-					if () {
+					mGo = GameObject.Find ("QUIManager");
+					if (mGo) {
+
 					} else {
-						GameObject.Instantiate (Resources.Load ("QUIManager"));
+						mGo = GameObject.Instantiate (Resources.Load ("QUIManager")) as GameObject;
 					}
 				}
 
