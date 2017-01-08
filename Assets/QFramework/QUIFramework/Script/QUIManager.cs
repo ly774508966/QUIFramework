@@ -6,15 +6,16 @@ using QFramework.AB;
 using QFramework.UI;
 namespace QFramework {
 
-	public enum CanvasLevel
+	public enum QUILevel
 	{
-		Top,
-		Middle,
-		Bottom,
-		Root,
-		MainCamera,
+		Bg,          			//背景层UI
+		Common,              	//普通层UI
+		PopUI,                 	//弹出层UI
+		Const,               	//持续存在层UI
+		Toast,               	//对话框层UI
+		Forward,              	//最高UI层用来放置UI特效和模型
 	}
-		
+
 	//// <summary>
 	/// UGUI UI界面管理器
 	/// </summary>
@@ -27,10 +28,10 @@ namespace QFramework {
 
 		protected override void SetupMgr ()
 		{
-			
+
 		}
 
-		public QUIBehaviour OpenUI<T>(CanvasLevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
+		public QUIBehaviour OpenUI<T>(QUILevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
 		{
 			string behaviourName = typeof(T).ToString();
 			if (!mAllUI.ContainsKey(behaviourName))
@@ -83,7 +84,7 @@ namespace QFramework {
 		{
 			mAllUI.Clear();
 		}
-			
+
 		static GameObject mGo;
 		public static QUIManager Instance {
 			get {
@@ -109,27 +110,28 @@ namespace QFramework {
 
 
 
-			
+
 		[SerializeField]
 		Dictionary<string,QUIBehaviour> mAllUI = new Dictionary<string, QUIBehaviour> ();
 
-		[SerializeField] Transform mCanvasTopTrans;
-		[SerializeField] Transform mCanvasMidTrans;
-		[SerializeField] Transform mCanvasBottomTrans;
-		[SerializeField] Transform mCanvasTrans;
-		[SerializeField] Transform mCanvasGuideTrans;
+		[SerializeField] Transform mBgTrans;
+		[SerializeField] Transform mCommonTrans;
+		[SerializeField] Transform mPopUITrans;
+		[SerializeField] Transform mConstTrans;
+		[SerializeField] Transform mToastTrans;
+		[SerializeField] Transform mForwardTrans;
 		[SerializeField] Camera mUICamera;
-			
+
 		/// <summary>
 		/// 增加UI层
 		/// </summary>
-		public QUIBehaviour CreateUI<T>  (CanvasLevel level,string bundleName,object uiData = null) where T : QUIBehaviour {
+		public QUIBehaviour CreateUI<T>  (QUILevel level,string bundleName,object uiData = null) where T : QUIBehaviour {
 
 			string behaviourName = typeof(T).ToString();
 
 			if (mAllUI.ContainsKey (behaviourName)) {
 
-                Debug.LogWarning(behaviourName + ": already exist");
+				Debug.LogWarning(behaviourName + ": already exist");
 
 				mAllUI [behaviourName].transform.localPosition = Vector3.zero;
 				mAllUI [behaviourName].transform.localEulerAngles = Vector3.zero;
@@ -142,21 +144,24 @@ namespace QFramework {
 
 				GameObject mUIGo = Instantiate (prefab);
 				switch (level) {
-				case CanvasLevel.Top:
-					mUIGo.transform.SetParent (mCanvasTopTrans);
-					break;
-				case CanvasLevel.Middle:
-					mUIGo.transform.SetParent (mCanvasMidTrans);
-					break;
-				case CanvasLevel.Bottom:
-					mUIGo.transform.SetParent (mCanvasBottomTrans);
-					break;
-				case CanvasLevel.Root:
-					mUIGo.transform.SetParent (transform);
-					break;
-				case CanvasLevel.MainCamera:
-					mUIGo.transform.SetParent (Camera.main.transform);
-					break;
+					case QUILevel.Bg:
+						mUIGo.transform.SetParent (mBgTrans);
+						break;
+					case QUILevel.Common:
+						mUIGo.transform.SetParent (mCommonTrans);
+						break;
+					case QUILevel.PopUI:
+						mUIGo.transform.SetParent (mPopUITrans);
+						break;
+					case QUILevel.Const:
+						mUIGo.transform.SetParent (mConstTrans);
+						break;
+					case QUILevel.Toast:
+						mUIGo.transform.SetParent (mToastTrans);
+						break;
+					case QUILevel.Forward:
+						mUIGo.transform.SetParent (mForwardTrans);
+						break;
 				}
 
 				mUIGo.transform.localPosition = Vector3.zero;
@@ -171,7 +176,7 @@ namespace QFramework {
 				mAllUI.Add (behaviourName, t);
 				t.Init (uiData);
 			}
-				
+
 			return mAllUI [behaviourName];
 		}
 
@@ -189,7 +194,7 @@ namespace QFramework {
 				mAllUI.Remove (behaviourName);
 			}
 		}
-			
+
 		/// <summary>
 		/// 显示UI层
 		/// </summary>
@@ -203,7 +208,7 @@ namespace QFramework {
 				mAllUI[behaviourName].Show ();
 			}
 		}
-			
+
 		/// <summary>
 		/// 隐藏UI层
 		/// </summary>
@@ -217,7 +222,7 @@ namespace QFramework {
 				mAllUI [behaviourName].Hide ();
 			}
 		}
-			
+
 		/// <summary>
 		/// 删除所有UI层
 		/// </summary>
@@ -231,7 +236,7 @@ namespace QFramework {
 
 			mAllUI.Clear ();
 		}
-			
+
 		/// <summary>
 		/// 获取UIBehaviour
 		public T GetUI<T>()
@@ -245,13 +250,13 @@ namespace QFramework {
 			return default(T);
 		}
 
-        /// <summary>
-        /// 获取UI相机
-        /// </summary>
-        /// <returns></returns>
-        public Camera GetUICamera() 
-        {
-            return mUICamera;
-        }
+		/// <summary>
+		/// 获取UI相机
+		/// </summary>
+		/// <returns></returns>
+		public Camera GetUICamera() 
+		{
+			return mUICamera;
+		}
 	}
 }

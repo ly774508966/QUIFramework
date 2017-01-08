@@ -6,7 +6,7 @@ using QFramework.UI;
 public class Home : MonoBehaviour {
 
 	void Start () {
-		QUIManager.Instance.OpenUI<UIStartPage>(CanvasLevel.Bottom,null,null);
+		QUIManager.Instance.OpenUI<UIStartPage>(QUILevel.Common,null,null);
 	}
 	
 	// Update is called once per frame
