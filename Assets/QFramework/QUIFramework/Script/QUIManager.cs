@@ -45,6 +45,7 @@ namespace QFramework {
 					} else {
 						mGo = GameObject.Instantiate (Resources.Load ("QUIManager")) as GameObject;
 					}
+					mGo.name = "QUIManager";
 				}
 
 				return QMonoSingletonComponent<QUIManager>.Instance;
