@@ -52,8 +52,6 @@ namespace QFramework {
 			}
 		}
 
-
-
 		public QUIBehaviour OpenUI<T>(QUILevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
 		{
 			string behaviourName = typeof(T).ToString();
@@ -70,7 +68,6 @@ namespace QFramework {
 			string strDlg = typeof(T).ToString();
 			if (mAllUI.ContainsKey(strDlg))
 			{
-				//                DebugUtils.Log(strDlg + " UnLoad Success");
 				mAllUI[strDlg].Close();
 			}
 		}
