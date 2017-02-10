@@ -32,6 +32,8 @@ namespace QFramework {
 		[SerializeField] Transform mToastTrans;
 		[SerializeField] Transform mForwardTrans;
 		[SerializeField] Camera mUICamera;
+		[SerializeField] Canvas mCanvas;
+		[SerializeField] CanvasScaler mCanvasScaler;
 
 		static GameObject mGo;
 		public static QUIManager Instance {
@@ -50,6 +52,22 @@ namespace QFramework {
 
 				return QMonoSingletonComponent<QUIManager>.Instance;
 			}
+		}
+
+		void Awake() {
+			DontDestroyOnLoad (this);
+			// DefaultResolution is 1024 768
+			SetResolution (768, 1024);
+			SetMatchOnWidthOrHeight (0.0f);
+
+		}
+
+		public void SetResolution(int width,int height) {
+			mCanvasScaler.referenceResolution = new Vector2 (width, height);
+		}
+
+		public void SetMatchOnWidthOrHeight(float heightPercent) {
+			mCanvasScaler.matchWidthOrHeight = heightPercent;
 		}
 
 		public QUIBehaviour OpenUI<T>(QUILevel canvasLevel,string bundleName,object uiData = null) where T : QUIBehaviour
